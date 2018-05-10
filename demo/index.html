@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue-chrome-tabs</title>
+</head>
+
+<body>
+  <div id="app">
+    <chrome-tabs :tabs="tabs" @tabs-change="tabsChange"></chrome-tabs>
+  </div>
+  <script src="https://unpkg.com/vue@2.2.6"></script>
+  <script src="../dist/vue-chrome-tabs.js"></script>
+  <script>
+    var main = {
+      name: "app",
+      // components: { ChromeTabs },
+      data() {
+        return {
+          tabs: [
+            {
+              title: "百度云",
+              active: true,
+              icon: "",
+              component: ""
+            }
+          ]
+        };
+      },
+      methods: {
+        tabsChange: function (data) {
+          console.log(data)
+          this.tabs = data.tabs;
+        }
+      }
+    };
+    var Ctor = Vue.extend(main);
+    new Ctor().$mount("#app");
+  </script>
+</body>
+
+</html>
